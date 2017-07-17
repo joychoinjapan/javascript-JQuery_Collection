@@ -1,0 +1,6 @@
+/*右面侧边框不动*/
+#J_BdSide{
+    position: fixed;
+    top:0px;
+    right: 0px;
+}

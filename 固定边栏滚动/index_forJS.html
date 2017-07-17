@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>固定边栏滚动效果演示</title>
+    <link href="demo.css" rel="stylesheet">
+    <!--这是一个右侧边框固定的样式-->
+    <!--<link rel="stylesheet" href="mycssforfixedscroll.css">-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+    <!--需求：固定边栏滚动效果-->
+    <!--滚动左侧边栏，右侧边栏不动，当滚动超过一定范围，右侧边栏一起滚动-->
+    <!--右侧边栏固定不变实现技术点；css position fixed-->
+    <!--如果需要做到左侧和右侧栏目滚动到一定程度，右侧停止滚动，需要固定：-->
+    <!--1.监听window的滚动事件-->
+    <!--2.设置fixed条件判断：当滚动高度+屏幕高度>右侧边栏高度，停止滚动，变为固定-->
+<div id="J_BdMain" class="main" style="background-color:darksalmon;width:60%;height:3000px;float:left;">
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+</div>
+<div id="J_BdSide" class="side" style="background-color:darkseagreen;width:35%;height:1000px;float: right;">
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+</div>
+<script>
+//需要封装一些函数
+    //获得一个元素的动引用
+    var $=function (id) {
+        return document.getElementById(id);
+    }
+    //obj:绑定的对象 event 事件 fn 事件触发的回掉函数
+    var addEvent=function (obj,event,fn) {
+
+        if(obj.addEventListener){
+            obj.addEventListener(event,fn,false);
+        }else if(obj.attachEvent){
+            obj.attachEvent('on'+event,fn);
+        }
+    }
+
+    var domSider=$("J_BdSide");
+    var scrollEvent=function () {
+        //右边栏的高度
+        var sideHeight=domSider.offsetHeight;
+        //屏幕高度
+        var screenHeight=document.documentElement.clientHeight||document.body.clientHeight;
+        var scrollHeight=document.documentElement.scrollTop||document.body.scrollTop;
+        if(scrollHeight+screenHeight>sideHeight){
+            domSider.style.position="fixed";
+
+            domSider.style.right=0+'px';
+
+            domSider.style.top=-(sideHeight-screenHeight)+'px';
+
+        }else {
+            domSider.style.position='static';
+        }
+    };
+    addEvent(window,"scroll",function () {
+        scrollEvent();
+
+    });
+    
+    addEvent(window,'resize',function () {
+        scrollEvent();
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>固定边栏滚动效果演示</title>
+    <link href="demo.css" rel="stylesheet">
+    <!--这是一个右侧边框固定的样式-->
+    <!--<link rel="stylesheet" href="mycssforfixedscroll.css">-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+    <!--需求：固定边栏滚动效果-->
+    <!--滚动左侧边栏，右侧边栏不动，当滚动超过一定范围，右侧边栏一起滚动-->
+    <!--右侧边栏固定不变实现技术点；css position fixed-->
+    <!--如果需要做到左侧和右侧栏目滚动到一定程度，右侧停止滚动，需要固定：-->
+    <!--1.监听window的滚动事件-->
+    <!--2.设置fixed条件判断：当滚动高度+屏幕高度>右侧边栏高度，停止滚动，变为固定-->
+<div id="J_BdMain" class="main" style="background-color:darksalmon;width:60%;height:3000px;float:left;">
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+    这是一个左面内容展示区域<br>
+</div>
+<div id="J_BdSide" class="side" style="background-color:darkseagreen;width:35%;height:1000px;float: right;">
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+    这是一个右面的栏目区域<br>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+    $(window).scroll(function() {
+        //总滑动的长度+窗口长度
+        var windowHeight = $(window).scrollTop() + $(window).height();
+        //右侧边栏长度
+        var sideHeight = $('#J_BdSide').height();
+        //当总长度大于右侧边栏长度的时候，右侧边栏不跟着一起滚动而是固定底部，如果小于，则恢复一起滚动
+        if (windowHeight > sideHeight) {
+            $('#J_BdSide').css({
+                'position' : 'fixed',
+                right : '0px',
+                top : -(sideHeight - $(window).height())
+            });
+        } else {
+            $('#J_BdSide').css({
+                'position' : 'static'
+            });
+        }
+    });
+    //当页面加载或者窗口大小发生变化时，重新布置
+    window.onload=function () {
+        $(window).trigger("scroll");
+    };
+    $(window).resize(function () {
+        $(window).trigger("scroll");
+    });
+
+
+</script>
+</body>
+</html>
