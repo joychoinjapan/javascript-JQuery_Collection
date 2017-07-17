@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生js轮播图</title>
+    <link rel="stylesheet" href="lunbo.css" >
+</head>
+
+
+<!--总容器-->
+<div id="ad" class="ad">
+<!--图片容器    -->
+    <div id="list" class="list clearfix">
+        <img class="selected" src="img/cover-film.jpg" alt="01">
+        <img src="img/cover-desk.jpg" alt="02">
+        <img src="img/cover-gadget.jpg" alt="03">
+    </div>
+<!--按钮容器-->
+    <div id="btns" class="btn">
+        <span class="on">1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+<a href="javascript:;" id="prev" class="arrow">&lt;</a>
+<a href="javascript:;" id="next" class="arrow">&gt;</a>
+</div>
+<script type="text/javascript">
+    var ad=document.getElementById("ad");
+    var imgs=document.getElementById("list").getElementsByTagName("img");
+    var btns=document.getElementById("btns").getElementsByTagName("span");
+    var prev=document.getElementById("prev");
+    var next=document.getElementById("next");
+
+    var n=1;
+    //取消当前图片和按钮，显示目标图片和按钮
+    function show(q) {
+        for(k=0;k<btns.length;k++){
+            if(btns[k].className==="on"){
+                fadeOut(imgs[k]);
+                btns[k].className="";
+                imgs[k].className="";
+                break;
+            }
+        }
+        imgs[q].className="selected";
+        fadeIn(imgs[q]);
+        btns[q].className="on";
+    }
+
+
+    //自动轮播函数：nextPic用于找到选中的按钮和图片，将其下一张添加选中的相应类名
+    function nextPic() {
+        //如果到底了，从头开始轮播
+        if(n===btns.length){
+            n=0;
+        }
+        show(n);
+        n++;
+    }
+
+    function prevPic() {
+        if(n===1){
+            n=btns.length+1;
+        }
+        show(n-2);
+        n--;
+    }
+
+    //将图片和左右箭头鼠标悬停时清空记时器
+    //也就时说停止轮播
+    function pause() {
+        clearInterval(m);
+    }
+
+    //将图片和左右箭头鼠标离开时重启计数器，写成函数restart
+    //也就是说重新开始轮播
+    function restart() {
+        m=setInterval(nextPic,3000);
+    }
+
+    //手动轮播
+    for(i=0;i<btns.length;i++){
+        btns[i].index=i;
+        btns[i].onmouseover=function () {
+            clearInterval(m);
+            if(this.className==="on"){return;}
+            show(this.index);
+        }
+        btns[i].onmouseout=function () {
+            n=this.index+1;
+            m=setInterval(nextPic,3000);
+        }
+        imgs[i].onmouseover=pause;
+        imgs[i].onmouseout=restart;
+    }
+
+    //左右箭头
+    next.onmouseover=pause;
+    next.onmouseout=restart;
+    next.onclick=nextPic;
+    prev.onmouseover=pause;
+    prev.onmouseout=restart;
+    prev.onclick=prevPic;
+
+    //透明度渐变,传入元素和透明度等级，设置透明度
+    function setOpacity(elem,level) {
+        if(elem.filters){
+            elem.style.filter="alpha(opacity="+level+")";
+
+        }else {
+            elem.style.opacity=level/100;
+        }
+    }
+
+    //渐入与渐出
+    function fadeIn(elem) {
+        setOpacity(elem,0);
+        for(var i=0;i<=20;i++){
+            (function () {
+                var level=i*5;
+                setTimeout(function () {
+                    setOpacity(elem,level)
+                },i*30);
+            })(i);
+        }
+    }
+
+    function fadeOut(elem) {
+        setOpacity(elem,0);
+        for(var i=0;i<=20;i++){
+            (function () {
+                var level=100-i*5;
+                setTimeout(function () {
+                    setOpacity(elem,level)
+                },i*30);
+            })(i);
+        }
+    }
+    window.onload=restart;
+
+
+</script>
+</body>
+</html>
