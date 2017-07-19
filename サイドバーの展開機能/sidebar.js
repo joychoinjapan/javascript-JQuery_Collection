@@ -42,6 +42,11 @@
     };
 
     var sidebar=new Sidebar();
+    
+    
+    var Menubar=function () {
+        
+    }
 
 
 })();
