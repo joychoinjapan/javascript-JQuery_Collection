@@ -1,0 +1,88 @@
+ul{
+    list-style: none;
+    padding-left: 0;
+}
+
+#sidebar{
+    width: 35px;
+    background-color: #e1e1e1;
+    padding-top: 200px;
+
+    /*全屏高度*/
+    position: fixed;
+    min-height: 100%;
+    z-index: 100;
+}
+
+
+#closeBar{
+    position: absolute;
+    bottom:300px;
+    width: 35px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+
+.item{
+    font-size: 12px;
+    font-family: Microsoft YaHei;
+    text-align: center;
+    margin-top:5px;
+}
+
+.item .des{
+    color: #313430;
+}
+
+/*右侧内容栏目*/
+.nav-content{
+    width:200px;
+    position: fixed;
+    min-height: 100%;
+    color: #e1e1e1;
+    border: 1px solid black;
+    z-index: 99;
+    opacity: 0;
+
+}
+
+
+.nav-con-close{
+    position: absolute;
+    top:5px;
+    right: 5px;
+    color: #000000;
+}
+.content{
+    width: 190px;
+    min-height: 100%;
+    position: absolute;
+    top:5%;
+    right: 5px;
+}
+
+#prof-content{
+    background-color: pink;
+}
+
+#asset-content{
+    background-color: gray;
+}
+
+#brand-content{
+    background-color: plum;
+}
+
+#broadcast-content{
+    background-color:cornflowerblue;
+}
+
+#foot-content{
+    background-color: antiquewhite;
+}
+
+#calendar-content{
+    background-color: powderblue;
+}
