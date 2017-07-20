@@ -25,23 +25,59 @@
                 var menuContentEl=document.getElementById(e.currentTarget.id+"-content");
                 //console.log(menuContentEl);
                 if(self.state==="allClosed"){
-                    console.log("open "+menuContentEl.id);
+
                     //コンテンツを隠す状態を設置
                     menuContentEl.style.top="0";
                     menuContentEl.style.left="-165px";
                     //コンテンツのクラスを初期化
                     menuContentEl.className="nav-content";
                     menuContentEl.classList.add("menuContent-move-right");
-
                     self.state="hasOpened";
                     self.currentOpenedMenuContent=menuContentEl;
+                    console.log("open "+menuContentEl.id);
                 }else if(self.state==="hasOpened"){
+
+                    //元のコンテンツを隠す
+
+                    self.currentOpenedMenuContent.className="nav-content";
+                    self.currentOpenedMenuContent.style.top="0";
+                    self.currentOpenedMenuContent.style.left="35px";
+                    self.currentOpenedMenuContent.classList.add("menuContent-move-left");
                     console.log("close "+self.currentOpenedMenuContent.id);
-                    self.state="hasOpened";
-                    console.log("opened "+menuContentEl.id);
-                    self.currentOpenedMenuContent=menuContentEl;
+
+                    //新しいコンテンツを展開
+                    if(menuContentEl!==self.currentOpenedMenuContent){
+                        menuContentEl.className="nav-content";
+                        menuContentEl.style.top="0";
+                        menuContentEl.style.left="-165px";
+                        menuContentEl.classList.add("menuContent-move-right");
+                        self.state="hasOpened";
+                        self.currentOpenedMenuContent=menuContentEl;
+                        console.log("opened "+menuContentEl.id);
+                    }else if(menuContentEl===self.currentOpenedMenuContent){
+                        self.state="allClosed";
+                        console.log("close all");
+                    }
+
+
 
                 }
+            });
+        }
+
+
+        //矢印をクリックすると、コンテンツが閉じる
+        this.menuContentList=document.querySelectorAll(".nav-content>div.nav-con-close");
+        for(i=0;i<this.menuContentList.length;i++){
+            this.menuContentList[i].addEventListener("click",function (e) {
+                // コンテンツdivを取得
+               var menuContent=e.currentTarget.parentNode;
+                menuContent.className="nav-content";
+                menuContent.style.top="0";
+                menuContent.style.left="35px";
+                menuContent.classList.add("menuContent-move-left");
+                console.log("close "+self.currentOpenedMenuContent.id);
+
             });
         }
 

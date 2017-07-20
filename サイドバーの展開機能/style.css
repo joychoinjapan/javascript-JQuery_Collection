@@ -56,9 +56,11 @@ ul{
 
 .nav-con-close{
     position: absolute;
-    top:5px;
+    top:1px;
     right: 5px;
     color: #000000;
+    cursor: pointer;
+
 
 }
 .content{
@@ -318,4 +320,47 @@ ul{
 
 }
 
+.menuContent-move-left{
+    -webkit-animation-name: mml;
+    -moz-animation-name: mml;
+    -o-animation-name: mml;
+    animation-name: mml;
+
+    -webkit-animation-duration: .5s;
+    -moz-animation-duration: .5s;
+    -o-animation-duration: .5s;
+    animation-duration: .5s;
+
+    -webkit-animation-iteration-count:1;
+    -moz-animation-iteration-count:1;
+    -o-animation-iteration-count:1;
+    animation-iteration-count:1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes mml {
+     from{
+         opacity: 1;
+     }
+     to{
+         opacity:0;
+         -webkit-transform:translateX(-200px);
+         transform:translateX(-200px);
+     }
+ }
+
+@-webkit-keyframes mml {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity:0;
+        -webkit-transform:translateX(-200px);
+        transform:translateX(-200px);
+    }
+}
 
