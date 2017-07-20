@@ -61,11 +61,17 @@
     //閉じると展開を定義
     Sidebar.prototype.close=function () {
         console.log("閉じる");
+        this.el.className="sidebar-move-left";
+        this.closeBarEl.className="closeBar-move-right";
         this.state="closed";
         
     };
     Sidebar.prototype.open=function () {
         console.log("展開");
+        this.el.style.left="-120px";
+        this.closeBarEl.style.left="160px";
+        this.el.className="sidebar-move-right";
+        this.closeBarEl.className="openBar-move-left";
         this.state="opened";
         
     };

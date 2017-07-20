@@ -1,3 +1,8 @@
+body{
+    margin: 0;
+}
+
+
 ul{
     list-style: none;
     padding-left: 0;
@@ -85,4 +90,184 @@ ul{
 
 #calendar-content{
     background-color: powderblue;
+}
+
+/*サイドバーを左へ*/
+.sidebar-move-left{
+    /*アニメーションの名前*/
+    -webkit-animation-name: sml;
+    -moz-animation-name: sml;
+    -o-animation-name: sml;
+    animation-name: sml;
+    /*アニメーションの続く時間*/
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -o-animation-duration: 1s;
+    animation-duration: 1s;
+    /*アニメーションの回数*/
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -o-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    /*アニメーション終了後、終了した位置に残る*/
+    -webkit-animation-fill-mode:forwards;
+    -moz-animation-fill-mode:forwards;
+    -o-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+}
+
+@keyframes sml {
+    from{
+    }
+
+    to{
+
+        transform:translateX(-120px);
+        -webkit-transform:translateX(-120px);
+    }
+}
+
+@-webkit-keyframes sml {
+    from{
+    }
+
+    to{
+        transform:translateX(-120px);
+        -webkit-transform:translateX(-120px);
+    }
+}
+
+
+
+
+
+
+/*展開ぼたんから閉じる*/
+.closeBar-move-right{
+    -webkit-animation-name: cmr;
+    -moz-animation-name: cmr;
+    -o-animation-name: cmr;
+    animation-name: cmr;
+
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -o-animation-duration: 1s;
+    animation-duration: 1s;
+
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -o-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    
+}
+
+@keyframes cmr {
+    from{
+
+    }
+    to{
+
+        transform:translateX(160px) rotate(405deg) scale(1.5);
+        -webkit-transform:translateX(160px) rotate(405deg) scale(1.5);
+    }
+}
+
+@-webkit-keyframes cmr {
+    from{
+
+    }
+    to{
+        transform:translateX(160px) rotate(405deg) scale(1.5);
+        -webkit-transform:translateX(160px) rotate(405deg) scale(1.5);
+
+    }
+}
+
+
+
+
+/*open サイドバーを展開*/
+.sidebar-move-right{
+    -webkit-animation-name: smr;
+    -moz-animation-name: smr;
+    -o-animation-name: smr;
+    animation-name: smr;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -o-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -o-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes smr {
+    from{}
+    to{
+        transform: translateX(120px);
+        -webkit-transform: translateX(120px);
+    }
+}
+@-webkit-keyframes smr {
+    from{}
+    to{
+        transform: translateX(120px);
+        -webkit-transform: translateX(120px);
+    }
+}
+
+/*閉じるボタンから展開ぼたん*/
+.openBar-move-left{
+    -webkit-animation-name: cml;
+    -moz-animation-name: cml;
+    -o-animation-name: cml;
+    animation-name: cml;
+
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -o-animation-duration: 1s;
+    animation-duration: 1s;
+
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -o-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes cml {
+    from{
+        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+    }
+    to{
+
+        transform:translateX(-160px) rotate(-405deg) scale(1);
+        -webkit-transform:translateX(-160px) rotate(-405deg) scale(1);
+    }
+}
+
+@-webkit-keyframes cml {
+    from{
+        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+    }
+    to{
+        transform:translateX(-160px) rotate(-405deg) scale(1);
+        -webkit-transform:translateX(-160px) rotate(-405deg) scale(1);
+    }
 }
