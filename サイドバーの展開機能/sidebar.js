@@ -26,6 +26,13 @@
                 //console.log(menuContentEl);
                 if(self.state==="allClosed"){
                     console.log("open "+menuContentEl.id);
+                    //コンテンツを隠す状態を設置
+                    menuContentEl.style.top="0";
+                    menuContentEl.style.left="-165px";
+                    //コンテンツのクラスを初期化
+                    menuContentEl.className="nav-content";
+                    menuContentEl.classList.add("menuContent-move-right");
+
                     self.state="hasOpened";
                     self.currentOpenedMenuContent=menuContentEl;
                 }else if(self.state==="hasOpened"){
