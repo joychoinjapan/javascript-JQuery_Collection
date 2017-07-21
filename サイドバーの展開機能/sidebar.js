@@ -76,6 +76,7 @@
                 menuContent.style.top="0";
                 menuContent.style.left="35px";
                 menuContent.classList.add("menuContent-move-left");
+                self.state="allClosed";
                 console.log("close "+self.currentOpenedMenuContent.id);
 
             });
@@ -103,11 +104,23 @@
 
     //閉じると展開を定義
     Sidebar.prototype.close=function () {
+
+
+        //サイドバーとコンテンツを全部閉じる
+        if(menubar.status="hasOpened"){
+            menubar.currentOpenedMenuContent.className="nav-content";
+            menubar.currentOpenedMenuContent.style.top="0";
+            menubar.currentOpenedMenuContent.style.left="35px";
+            menubar.currentOpenedMenuContent.classList.add("menuContent-move-left");
+            console.log("close "+menubar.currentOpenedMenuContent.id);
+            menubar.state="allClosed";
+            console.log("close all");
+
+        }
         console.log("閉じる");
         this.el.className="sidebar-move-left";
         this.closeBarEl.className="closeBar-move-right";
         this.state="closed";
-        
     };
     Sidebar.prototype.open=function () {
         console.log("展開");
@@ -127,6 +140,7 @@
     };
 
     var sidebar=new Sidebar();
+    var menubar=new Menubar();
 
 
 
